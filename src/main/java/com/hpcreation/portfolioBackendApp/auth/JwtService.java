@@ -1,5 +1,6 @@
 package com.hpcreation.portfolioBackendApp.auth;
 
+import com.hpcreation.portfolioBackendApp.utils.TimeUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
@@ -16,7 +17,7 @@ public class JwtService {
 
     public String generateToken(String username) {
 
-        Instant now = Instant.now();
+        Instant now = TimeUtils.now();
 
         JwtClaimsSet claims = JwtClaimsSet.builder()
                 .issuer("portfolio-api")

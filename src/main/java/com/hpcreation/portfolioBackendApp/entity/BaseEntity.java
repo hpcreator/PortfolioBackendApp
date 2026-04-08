@@ -1,5 +1,6 @@
 package com.hpcreation.portfolioBackendApp.entity;
 
+import com.hpcreation.portfolioBackendApp.utils.TimeUtils;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,5 +18,5 @@ public abstract class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Instant createdAt = Instant.now();
+    private Instant createdAt = TimeUtils.now();
 }

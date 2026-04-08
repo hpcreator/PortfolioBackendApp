@@ -1,6 +1,6 @@
 package com.hpcreation.portfolioBackendApp.controller;
 
-import com.hpcreation.portfolioBackendApp.dto.ApiResponse;
+import com.hpcreation.portfolioBackendApp.dto.api_response.ApiResponse;
 import com.hpcreation.portfolioBackendApp.dto.skill.SkillRequestDto;
 import com.hpcreation.portfolioBackendApp.dto.skill.SkillResponseDto;
 import com.hpcreation.portfolioBackendApp.service.SkillService;

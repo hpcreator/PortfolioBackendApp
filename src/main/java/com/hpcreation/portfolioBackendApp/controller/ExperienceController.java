@@ -1,6 +1,6 @@
 package com.hpcreation.portfolioBackendApp.controller;
 
-import com.hpcreation.portfolioBackendApp.dto.ApiResponse;
+import com.hpcreation.portfolioBackendApp.dto.api_response.ApiResponse;
 import com.hpcreation.portfolioBackendApp.dto.experience.ExperienceRequestDto;
 import com.hpcreation.portfolioBackendApp.dto.experience.ExperienceResponseDto;
 import com.hpcreation.portfolioBackendApp.service.ExperienceService;

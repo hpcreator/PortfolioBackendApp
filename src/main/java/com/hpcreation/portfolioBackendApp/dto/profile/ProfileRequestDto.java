@@ -10,13 +10,15 @@ import lombok.Setter;
 public class ProfileRequestDto {
 
     @NotBlank(message = "Name is required")
-    @Size(max = 100)
+    @Size(min = 2, max = 100)
     private String name;
 
-    @Size(max = 150)
+    @Size(min = 3, max = 150)
+    @NotBlank(message = "Title is required")
     private String title;
 
-    @Size(max = 2000)
+    @Size(min = 10, max = 2000)
+    @NotBlank(message = "Bio is required")
     private String bio;
 
     private String profileImage;

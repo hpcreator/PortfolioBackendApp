@@ -1,6 +1,6 @@
 package com.hpcreation.portfolioBackendApp.controller;
 
-import com.hpcreation.portfolioBackendApp.dto.ApiResponse;
+import com.hpcreation.portfolioBackendApp.dto.api_response.ApiResponse;
 import com.hpcreation.portfolioBackendApp.dto.achievement.AchievementRequestDto;
 import com.hpcreation.portfolioBackendApp.dto.achievement.AchievementResponseDto;
 import com.hpcreation.portfolioBackendApp.service.AchievementService;

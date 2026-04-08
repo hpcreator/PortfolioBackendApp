@@ -2,21 +2,26 @@ package com.hpcreation.portfolioBackendApp.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@Table(name = "profiles", uniqueConstraints = {@UniqueConstraint(name = "unique_single_profile", columnNames = "singleton_key")})
 public class Profile extends BaseEntity {
+    @Column(name = "singleton_key", nullable = false, updatable = false)
+    private int singletonKey = 1;
+
     @Column(nullable = false)
-    @NotBlank
     private String name;
 
+    @Column(nullable = false)
     private String title;
 
-    @Column(length = 2000)
+    @Column(nullable = false)
     private String bio;
 
     private String profileImage;

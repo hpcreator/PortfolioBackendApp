@@ -1,4 +1,4 @@
-package com.hpcreation.portfolioBackendApp.config;
+package com.hpcreation.portfolioBackendApp.config.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
