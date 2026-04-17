@@ -35,12 +35,17 @@ public class ProfileService {
     }
 
     public ProfileResponseDto updateProfile(ProfileRequestDto dto) {
-
-        Profile profile = repository.findBySingletonKey(SINGLETON_KEY)
-            .orElseThrow(() -> new ResourceNotFoundException("Profile not found"));
+        Profile profile = repository.findBySingletonKey(SINGLETON_KEY).orElseThrow(() -> new ResourceNotFoundException("Profile not found"));
 
         mapper.updateEntity(dto, profile);
 
         return mapper.toDto(repository.save(profile));
+    }
+
+    public void deleteProfile() {
+        if (!repository.existsBySingletonKey(SINGLETON_KEY)) {
+            throw new ResourceNotFoundException("Profile not found");
+        }
+        repository.findBySingletonKey(SINGLETON_KEY).ifPresent(repository::delete);
     }
 }

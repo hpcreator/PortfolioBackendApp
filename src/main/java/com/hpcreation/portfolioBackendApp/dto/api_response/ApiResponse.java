@@ -1,7 +1,6 @@
 package com.hpcreation.portfolioBackendApp.dto.api_response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.hpcreation.portfolioBackendApp.utils.TimeUtils;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -25,10 +24,10 @@ public class ApiResponse<T> {
     private Instant timestamp;
 
     public static <T> ApiResponse<T> success(String message, T data) {
-        return ApiResponse.<T>builder().success(true).message(message).data(data).timestamp(TimeUtils.now()).build();
+        return ApiResponse.<T>builder().success(true).message(message).data(data).build();
     }
 
     public static <T> ApiResponse<T> failure(String message, ApiError error) {
-        return ApiResponse.<T>builder().success(false).message(message).error(error).timestamp(TimeUtils.now()).build();
+        return ApiResponse.<T>builder().success(false).message(message).error(error).build();
     }
 }

@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.Instant;
+
 @Getter
 @Setter
 public class ProfileRequestDto {
@@ -28,4 +30,6 @@ public class ProfileRequestDto {
     private String linkedin;
 
     private String twitter;
+
+    private Instant updatedDate = Instant.now();
 }

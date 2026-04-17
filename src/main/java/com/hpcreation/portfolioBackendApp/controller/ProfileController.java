@@ -32,4 +32,10 @@ public class ProfileController {
     public ResponseEntity<ApiResponse<ProfileResponseDto>> updateProfile(@Valid @RequestBody ProfileRequestDto request) {
         return ResponseEntity.ok(ApiResponse.success("Profile updated successfully", service.updateProfile(request)));
     }
+
+    @DeleteMapping
+    public ResponseEntity<ApiResponse<Void>> deleteProfile() {
+        service.deleteProfile();
+        return ResponseEntity.ok(ApiResponse.success("Profile deleted successfully", null));
+    }
 }

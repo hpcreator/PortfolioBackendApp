@@ -1,12 +1,13 @@
 package com.hpcreation.portfolioBackendApp.entity;
 
-import com.hpcreation.portfolioBackendApp.utils.TimeUtils;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
@@ -18,5 +19,8 @@ public abstract class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Instant createdAt = TimeUtils.now();
+    @UpdateTimestamp
+    private Instant updatedDate;
+    @CreationTimestamp
+    private Instant createdDate;
 }
