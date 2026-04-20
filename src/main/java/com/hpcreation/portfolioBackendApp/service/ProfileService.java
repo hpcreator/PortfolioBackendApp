@@ -13,29 +13,28 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ProfileService {
-    private static final int SINGLETON_KEY = 1;
+    //private final long SINGLETON_ID = 1;
     private final ProfileRepository repository;
     private final ProfileMapper mapper;
 
     public ProfileResponseDto getProfile() {
-        Profile profile = repository.findBySingletonKey(SINGLETON_KEY).orElseThrow(() -> new ResourceNotFoundException("Profile not found"));
+        Profile profile = repository.findFirstByOrderByIdAsc().orElseThrow(() -> new ResourceNotFoundException("Profile not found"));
         return mapper.toDto(profile);
     }
 
     public ProfileResponseDto createProfile(ProfileRequestDto dto) {
 
-        if (repository.existsBySingletonKey(SINGLETON_KEY)) {
+        if (repository.count() == 1) {
             throw new ProfileAlreadyExistsException("Profile already exists");
         }
 
         Profile profile = mapper.toEntity(dto);
-        profile.setSingletonKey(SINGLETON_KEY);
 
         return mapper.toDto(repository.save(profile));
     }
 
     public ProfileResponseDto updateProfile(ProfileRequestDto dto) {
-        Profile profile = repository.findBySingletonKey(SINGLETON_KEY).orElseThrow(() -> new ResourceNotFoundException("Profile not found"));
+        Profile profile = repository.findFirstByOrderByIdAsc().orElseThrow(() -> new ResourceNotFoundException("Profile not found"));
 
         mapper.updateEntity(dto, profile);
 
@@ -43,9 +42,9 @@ public class ProfileService {
     }
 
     public void deleteProfile() {
-        if (!repository.existsBySingletonKey(SINGLETON_KEY)) {
+        if (repository.findFirstByOrderByIdAsc().isEmpty()) {
             throw new ResourceNotFoundException("Profile not found");
         }
-        repository.findBySingletonKey(SINGLETON_KEY).ifPresent(repository::delete);
+        repository.findFirstByOrderByIdAsc().ifPresent(repository::delete);
     }
 }

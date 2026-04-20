@@ -12,9 +12,6 @@ import lombok.Setter;
 @Setter
 @Table(uniqueConstraints = {@UniqueConstraint(name = "unique_single_profile", columnNames = "singleton_key")})
 public class Profile extends BaseEntity {
-    @Column(name = "singleton_key", nullable = false, updatable = false)
-    private int singletonKey = 1;
-
     @Column(nullable = false)
     private String name;
 

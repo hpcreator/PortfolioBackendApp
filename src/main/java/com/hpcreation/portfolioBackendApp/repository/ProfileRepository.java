@@ -8,7 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface ProfileRepository extends JpaRepository<Profile, Long> {
-    Optional<Profile> findBySingletonKey(int singletonKey);
-
-    boolean existsBySingletonKey(int singletonKey);
+    Optional<Profile> findFirstByOrderByIdAsc();
 }
