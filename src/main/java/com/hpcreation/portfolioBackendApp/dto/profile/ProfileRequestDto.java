@@ -2,28 +2,19 @@ package com.hpcreation.portfolioBackendApp.dto.profile;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
-public class ProfileRequestDto {
+public record ProfileRequestDto(
+    @NotBlank(message = "Name is required") @Size(min = 2, max = 100) String name,
 
-    @NotBlank(message = "Name is required")
-    @Size(max = 100)
-    private String name;
+    @Size(min = 3, max = 150) @NotBlank(message = "Title is required") String title,
 
-    @Size(max = 150)
-    private String title;
+    @Size(min = 10, max = 2000) @NotBlank(message = "Bio is required") String bio,
 
-    @Size(max = 2000)
-    private String bio;
+    String profileImage,
 
-    private String profileImage;
+    String github,
 
-    private String github;
+    String linkedin,
 
-    private String linkedin;
-
-    private String twitter;
+    String twitter) {
 }

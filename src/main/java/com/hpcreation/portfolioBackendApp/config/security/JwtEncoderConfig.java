@@ -1,4 +1,4 @@
-package com.hpcreation.portfolioBackendApp.config;
+package com.hpcreation.portfolioBackendApp.config.security;
 
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
